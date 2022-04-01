@@ -1,0 +1,278 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(164, 224, 245);
+}
+
+body {
+    --playerCreatorBgColor: rgb(236, 89, 177);
+    --mainFOntColor: rgb(84, 86, 90);
+}
+
+.app-wrapper {
+    height: 100vh;
+    width: 1300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 40px;
+    margin: 40px;
+    color: rgb(84, 86, 90);
+    text-align: center;
+}
+
+.players-wrapper {
+    background-color: rgb(209, 203, 203);
+    border-radius: 20px;
+    padding: 10px;
+    width: 1200px;
+    margin-bottom: 10px;
+
+}
+
+.players-wrapper h2 {
+    text-align: center;
+    font-size: 20px;
+    color: rgb(59, 58, 58);
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.players-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.add-new-player,
+.remove-all-players,
+.sort-players {
+    display: block;
+    padding: 7px 20px;
+    width: 18%;
+    border-radius: 12px;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.sort-players {
+    background-color: rgb(248, 200, 9);
+}
+
+.sort-players:hover {
+    background-color: rgb(248, 77, 9);
+
+}
+
+.add-new-player:hover {
+    background-color: rgb(142, 202, 240);
+}
+
+.remove-all-players:hover {
+    background-color: rgb(235, 176, 14);
+}
+
+.players-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    height: 320px;
+
+}
+
+.player {
+    background-color: rgb(135, 177, 191);
+    padding: 5px;
+    width: calc(100%/10);
+    height: fit-content;
+    border-radius: 12px;
+    margin: 5px;
+}
+
+.name {
+    text-align: center;
+    font-weight: 700;
+    margin: 5px 0;
+
+}
+
+.remove-player {
+    border: none;
+    background: none;
+    display: block;
+    margin: 0 auto;
+    color: rgb(240, 171, 24);
+    cursor: pointer;
+}
+
+.assets {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.assets p {
+    font-size: 11px;
+    font-weight: 600;
+
+}
+
+.teams-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    /* background-color: #fff; */
+    width: 1000px;
+
+}
+
+.team1,
+.team2 {
+    background-color: rgb(135, 127, 127);
+    width: 50%;
+    height: 350px;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+
+.team1 {
+    margin: 20px 10px 20px 20px;
+}
+
+.team2 {
+    margin: 20px 20px 20px 10px;
+}
+
+.team1 h2,
+.team2 h2 {
+    text-align: center;
+    color: rgb(240, 171, 24);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.team1 h3,
+.team2 h3 {
+    text-align: center;
+    color: rgb(240, 171, 24);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.team1 h3 p,
+.team2 h3 p {
+    margin-left: 6px;
+    font-weight: 700;
+}
+
+ul {
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+    font-size: 20px;
+
+}
+
+li {
+    list-style-type: none;
+    text-align: center;
+    font-size: 18px;
+    margin: 10px;
+    display: inline-block;
+}
+
+/**************** Player creator ***************/
+
+.player-creator {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px 0;
+    width: 600px;
+    background-color: rgb(188, 233, 238);
+    box-shadow: 0 0 15px rgb(130, 126, 126);
+    border-radius: 12px;
+
+}
+
+.player-creator h2 {
+    font-size: 30px;
+}
+
+label {
+    font-size: 20px;
+    color: rgb(159, 122, 22);
+    margin: 10px 0;
+    font-weight: 700;
+
+}
+
+input {
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    transition: 300ms;
+    width: 80%;
+}
+
+input:hover {
+    background-color: rgb(144, 199, 233);
+}
+
+.player-creator .error {
+    color: rgb(235, 121, 14);
+    font-size: 20px;
+    visibility: hidden;
+    font-weight: 700;
+}
+
+.player-creator button {
+    display: inline-block;
+    padding: 5px;
+    width: 150px;
+    border-radius: 12px;
+    border: 1px solid rgb(90, 84, 84);
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.add-player-creator-btn {
+    background-color: rgb(20, 172, 167);
+    margin-right: 10px;
+}
+
+.add-player-creator-btn:hover {
+    background-color: rgb(81, 241, 236);
+}
+
+.cancel-btn {
+    background-color: rgb(235, 121, 14);
+    margin-left: 10px;
+}
+
+.cancel-btn:hover {
+    background-color: rgb(235, 171, 111);
+}
