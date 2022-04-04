@@ -46,6 +46,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .players-btns {
@@ -89,7 +90,7 @@ h1 {
     justify-content: center;
     padding: 10px;
     height: 320px;
-
+    position: relative;
 }
 
 .player {
@@ -206,7 +207,7 @@ li {
     align-items: center;
     flex-direction: column;
     position: absolute;
-    top: 50%;
+    top: 30%; 
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 40px 0;
@@ -275,4 +276,41 @@ input:hover {
 
 .cancel-btn:hover {
     background-color: rgb(235, 171, 111);
+}
+
+/****************** Non even error div ************************* */
+
+.not-even-error {
+    display: none; 
+    z-index: 10;
+    background-color: rgb(237, 157, 28); 
+    width: 50%;
+    padding: 20px;
+    border-radius: 12px; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.not-even-error p {
+    font-size: 26px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.close-btn {
+   padding: 5px 15px; 
+   border-radius: 12px;
+   border: 1px solid rgb(133, 128, 128);
+   font-weight: 700;
+   background-color: rgb(202, 194, 194);
+   transition: 300ms;
+   display: block;
+   margin: 0 auto;
+   
+}
+
+.close-btn:hover {
+    background-color: #fff;
 }
