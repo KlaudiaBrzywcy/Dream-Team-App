@@ -40,26 +40,26 @@ let playerID = 0;
 const teamAmount = 2;
 
 // CREATING DEFAULT PLAYERS 
-const Perzu = { name: 'Perzu', skill: 2, damage: 2, speed: 4, id: 0 };
-const Kopec = { name: 'Kopeć', skill: 7, damage: 7, speed: 6, id: 1 };
-const AntMan = { name: 'Ant-Man', skill: 10, damage: 9, speed: 9, id: 2 };
-const Dawid = { name: 'Dawid', skill: 5, damage: 4, speed: 6, id: 3 };
-const Gracjan = { name: 'Gracjan', skill: 8, damage: 6, speed: 10, id: 4 };
-const Jan = { name: 'Jan', skill: 6, damage: 10, speed: 7, id: 5 };
-const Biały = { name: 'Biały', skill: 7, damage: 5, speed: 6, id: 6 };
-const Krzychu = { name: 'Krzychu', skill: 4, damage: 6, speed: 5, id: 7 };
-const Michu = { name: 'Michu', skill: 2, damage: 1, speed: 8, id: 8 };
-const Jasion = { name: 'Jasion', skill: 7, damage: 9, speed: 6, id: 9 };
-const Kajet = { name: 'Kajet', skill: 10, damage: 9, speed: 8, id: 10 };
-const Tymek = { name: 'Tymek', skill: 10, damage: 9, speed: 10, id: 11 };
-const Witek = { name: 'Witek', skill: 5, damage: 5, speed: 8, id: 12 };
-const Darek = { name: 'Darek', skill: 7, damage: 6, speed: 5, id: 13 };
-const Kebik = { name: 'Kebik', skill: 5, damage: 4, speed: 7, id: 14 };
-const Kubson = { name: 'Kubson', skill: 8, damage: 7, speed: 8, id: 15 };
-const Maciek = { name: 'Maciek', skill: 7, damage: 6, speed: 6, id: 16 };
-const Kacper = { name: 'Kacper', skill: 6, damage: 4, speed: 8, id: 17 };
-const Niclas = { name: 'Niclas', skill: 6, damage: 7, speed: 5, id: 18 };
-const Artur = { name: 'Artur', skill: 2, damage: 3, speed: 6, id: 19 };
+const Perzu = { name: 'Perzu', skill: 2, damage: 2, speed: 4, id: 0, aPTA: 0 };
+const Kopec = { name: 'Kopeć', skill: 7, damage: 7, speed: 6, id: 1, aPTA: 0 };
+const AntMan = { name: 'Ant-Man', skill: 10, damage: 9, speed: 9, id: 2, aPTA: 0 };
+const Dawid = { name: 'Dawid', skill: 5, damage: 4, speed: 6, id: 3, aPTA: 0 };
+const Gracjan = { name: 'Gracjan', skill: 8, damage: 6, speed: 10, id: 4, aPTA: 0 };
+const Jan = { name: 'Jan', skill: 6, damage: 10, speed: 7, id: 5, aPTA: 0 };
+const Biały = { name: 'Biały', skill: 7, damage: 5, speed: 6, id: 6, aPTA: 0 };
+const Krzychu = { name: 'Krzychu', skill: 4, damage: 6, speed: 5, id: 7, aPTA: 0 };
+const Michu = { name: 'Michu', skill: 2, damage: 1, speed: 8, id: 8, aPTA: 0 };
+const Jasion = { name: 'Jasion', skill: 7, damage: 9, speed: 6, id: 9, aPTA: 0 };
+const Kajet = { name: 'Kajet', skill: 10, damage: 9, speed: 8, id: 10, aPTA: 0 };
+const Tymek = { name: 'Tymek', skill: 10, damage: 9, speed: 10, id: 11, aPTA: 0 };
+const Witek = { name: 'Witek', skill: 5, damage: 5, speed: 8, id: 12, aPTA: 0 };
+const Darek = { name: 'Darek', skill: 7, damage: 6, speed: 5, id: 13, aPTA: 0 };
+const Kebik = { name: 'Kebik', skill: 5, damage: 4, speed: 7, id: 14, aPTA: 0 };
+const Kubson = { name: 'Kubson', skill: 8, damage: 7, speed: 8, id: 15, aPTA: 0 };
+const Maciek = { name: 'Maciek', skill: 7, damage: 6, speed: 6, id: 16, aPTA: 0 };
+const Kacper = { name: 'Kacper', skill: 6, damage: 4, speed: 8, id: 17, aPTA: 0 };
+const Niclas = { name: 'Niclas', skill: 6, damage: 7, speed: 5, id: 18, aPTA: 0 };
+const Artur = { name: 'Artur', skill: 2, damage: 3, speed: 6, id: 19, aPTA: 0 };
 
 // CREATING PLAYERS ARR
 let playersArr = [Perzu, Kopec, AntMan, Dawid, Gracjan, Jan, Biały, Krzychu, Michu,
@@ -67,6 +67,11 @@ let playersArr = [Perzu, Kopec, AntMan, Dawid, Gracjan, Jan, Biały, Krzychu, Mi
 
 
 // FUNCTIONS *****************************************************************************
+
+// function for creating numer range
+function numberRange(start, end) {
+    return new Array(end - start).fill().map((d, i) => i + start);
+};
 
 // Creating and adding players
 const openCreator = () => {
@@ -106,7 +111,7 @@ const createNewPlayer = () => {
 
     playerID++;
 
-    let newPlayerObject = { name: `${inputName.value}`, skill: parseInt(inputSkill.value), damage: parseInt(inputDamage.value), speed: parseInt(inputSpeed.value), id: playerID }
+    let newPlayerObject = { name: `${inputName.value}`, skill: parseInt(inputSkill.value), damage: parseInt(inputDamage.value), speed: parseInt(inputSpeed.value), id: playerID, aPTA: 0 }
     playersArr.push(newPlayerObject)
 }
 
@@ -167,8 +172,9 @@ const createDefaultPlayers = () => {
 
 playersArr.forEach(el => createDefaultPlayers())
 
+// 2 Functions that removes the right player from playersArr
 const updateArr1 = () => {
-    for (i = 0; i < playersArr.length; i++) {
+    for (let i = 0; i < playersArr.length; i++) {
         // console.log(playersArr[i].id)
 
         if (listToRemove.includes(playersArr[i].id)) {
@@ -178,7 +184,7 @@ const updateArr1 = () => {
 }
 
 const updateArr2 = () => {
-    for (i = 0; i < listToRemove.length; i++) {
+    for (let i = 0; i < listToRemove.length; i++) {
         updateArr1();
         console.log(playersArr);
     }
@@ -203,47 +209,82 @@ const sortPlayers = () => {
     }
 }
 
+
+// DECLARING aPTA LIST
+const aPTAArr = [];
+
 const sort = () => {
     console.log('click');
 
-    let teamSize = playersArr.length / 2;
-    let skillSum = 0;
-    let damageSum = 0;
-    let speedSum = 0;
-    for (i = 0; i < playersArr.length; i++) {
+    // Average player total asset - aPTA
 
-        skillSum += playersArr[i].skill;
+    // const aPTA = Math.round((mediumSpeed + mediumSkill + mediumDamage) / 3);
+    // console.log(`aPTA: ${aPTA}`);
 
-        damageSum += playersArr[i].damage;
+    // check aPTA for each player and add to the aPTAArr and update aPTA
+    // in playersArr
 
-        speedSum += playersArr[i].speed;
+    for (let i = 0; i < playersArr.length; i++) {
+        const aPTA = playersArr[i].skill + playersArr[i].damage + playersArr[i].speed;
+        console.log(aPTA);
+        aPTAArr.push(aPTA);
+        playersArr[i].aPTA = aPTAArr[i];
     }
-    // console.log(skillSum);
-    const mediumSkill = Math.round(skillSum / playersArr.length);
-    console.log(mediumSkill);
 
-    // console.log(damageSum);
-    const mediumDamage = Math.round(damageSum / playersArr.length);
-    console.log(mediumDamage);
+    console.log("----------------");
 
-    // console.log(speedSum);
-    const mediumSpeed = Math.round(speedSum / playersArr.length);
-    console.log(mediumSpeed);
-
-    // Average player total asset
-    const aPTA = Math.round((mediumSpeed + mediumSkill + mediumDamage) / 3);
-    console.log(`aPTA: ${aPTA}`);
-
-    // check aPTA for each player
-    // for (i = 0; i < playersArr.length; i++) {
-
-    // }
     console.log(playersArr)
+
+    console.log(aPTAArr)
+    // Medium aPTA for each team (goal value during sorting)- goalaPTA
+    let sum = 0;
+    for (let i = 0; i < aPTAArr.length; i++) {
+        sum += aPTAArr[i]
+    }
+
+    let goalaPTA = Math.floor(sum / 2);
+    console.log(goalaPTA)
+
+    let teamSize = playersArr.length / 2;
+
     console.log(teamSize);
     let team1Arr = [];
-    team1Arr.length = teamSize;
-    let team2Arr = [];
-    team2Arr.length = teamSize;
+    let team1aPTA = 0;
+    let nrInRange = numberRange((goalaPTA + 1), (goalaPTA + 3));
+
+    console.log(nrInRange)
+    // team1Arr.length = teamSize;
+    // let team2Arr = [];
+    // team2Arr.length = teamSize;
+
+    // TUTAJ DOCELOWO BĘDĘ ITEROWAC PO TABLICY Z GRACZAMI playersArr WSTAWIŁAM NA RAZIE
+    // aPTAArr na potrzeby wymyslenia algorytmu optymalnego sortowania 
+    console.log('pętla while ***************')
+    let i = 0;
+    if (nrInRange.includes(team1aPTA) === false) {
+        do {
+            team1aPTA += aPTAArr[i];
+            console.log(team1aPTA);
+
+            team1Arr.push(aPTAArr[i]);
+            console.log(team1Arr);
+            i++;
+
+        } while (team1aPTA <= goalaPTA && team1Arr.length < teamSize);
+    }
+    // do {
+    //     team1aPTA += aPTAArr[i];
+    //     console.log(team1aPTA);
+
+    //     team1Arr.push(aPTAArr[i]);
+    //     console.log(team1Arr);
+    //     i++;
+
+    // } while (team1aPTA <= goalaPTA && team1Arr.length < teamSize);
+    // team1aPTA !== goalaPTA &&
+    // team1Arr.length <= teamSize &&
+    // team1aPTA <= (goalaPTA - 2) && team1aPTA <= (goalaPTA + 2)
+    // && nrInRange.includes(team1aPTA)
 
 }
 
@@ -265,3 +306,36 @@ addPlayerCreatorBtn.addEventListener('click', addNewPlayer);
 removeAllBtn.addEventListener('click', removeAllPlayers);
 sortPlayersBtn.addEventListener('click', sortPlayers);
 notEvenCloseBtn.addEventListener('click', closeNotEvenErr);
+
+
+
+// BRUDNOPIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// let skillSum = 0;
+// let damageSum = 0;
+// let speedSum = 0;
+// for (i = 0; i < playersArr.length; i++) {
+
+//     skillSum += playersArr[i].skill;
+
+//     damageSum += playersArr[i].damage;
+
+//     speedSum += playersArr[i].speed;
+// }
+// // console.log(skillSum);
+// const mediumSkill = Math.round(skillSum / playersArr.length);
+// console.log(mediumSkill);
+// // console.log(damageSum);
+// const mediumDamage = Math.round(damageSum / playersArr.length);
+// console.log(mediumDamage);
+// // console.log(speedSum);
+// const mediumSpeed = Math.round(speedSum / playersArr.length);
+// console.log(mediumSpeed);
+
+// function numberRange(start, end) {
+//     return new Array(end - start).fill().map((d, i) => i + start);
+// }
+
+// console.log('nr')
+// let nr = numberRange(1, 10);
+// console.log(nr) 
