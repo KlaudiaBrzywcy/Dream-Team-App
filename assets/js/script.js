@@ -212,15 +212,16 @@ const sortPlayers = () => {
 
 
 // DECLARING aPTA LIST
-const aPTAArr = [];
+let aPTAArr = [];
+let team1Indexes = [];
+let team2Indexes = [];
+let team1Arr = [];
+let team2Arr = [];
 
 const sort = () => {
     console.log('click');
 
     // Average player total asset - aPTA
-
-    // const aPTA = Math.round((mediumSpeed + mediumSkill + mediumDamage) / 3);
-    // console.log(`aPTA: ${aPTA}`);
 
     // check aPTA for each player and add to the aPTAArr and update aPTA
     // in playersArr
@@ -249,28 +250,8 @@ const sort = () => {
     let teamSize = playersArr.length / 2;
 
     console.log(teamSize);
-    let team1Arr = [];
-    let team1aPTA = 0;
-    // let nrInRange = numberRange((goalaPTA + 1), (goalaPTA + 3));
 
-    // console.log(nrInRange)
-    // team1Arr.length = teamSize;
-    // let team2Arr = [];
-    // team2Arr.length = teamSize;
-
-    console.log('pętla while ***************')
-    // let i = 0;
-    // if (nrInRange.includes(team1aPTA) === false) {
-    //     do {
-    //         team1aPTA += aPTAArr[i];
-    //         console.log(team1aPTA);
-
-    //         team1Arr.push(aPTAArr[i]);
-    //         console.log(team1Arr);
-    //         i++;
-
-    //     } while (team1aPTA <= goalaPTA && team1Arr.length < teamSize);
-    // }
+    console.log('getCombinations ***************');
 
     const getCombinations = (data, key, size, target, bias = Number.MAX_VALUE) => {
         const iter = (index = 0, sum = 0, right = []) => {
@@ -291,17 +272,21 @@ const sort = () => {
         return result;
     };
 
+    console.log('playersAr');
+    console.log(playersArr);
+
 
     target = goalaPTA;
+
     console.log('target below');
     console.log(target);
 
+    console.log('pleyersArr before result');
+    console.log(playersArr);
+
     result = getCombinations(playersArr, 'aPTA', playersArr.length >> 1, target, teamSize);
     console.log('result ************************************');
-    // console.log(result);
-    // console.log(result[0][0]);
 
-    // result.forEach(el => console.log(el[0]));
     let count = 0
     result.forEach(el => {
         if (count > 1) {
@@ -310,10 +295,48 @@ const sort = () => {
             if (el[0] === target) {
 
                 console.log(el);
+                team1Indexes.push(...el);
                 count++;
             }
         }
     });
+    console.log('team1indexes')
+    console.log(team1Indexes);
+    team1Indexes.shift();
+    console.log(team1Indexes);
+    console.log('Pushing players to right teams');
+
+
+    const pushToRightTeam = () => {
+        for (i = 0; i < playersArr.length; i++) {
+            if (team1Indexes.includes(i)) {
+                team1Arr.push(playersArr[i]);
+            } else {
+                team2Arr.push(playersArr[i]);
+            }
+        }
+    }
+
+    pushToRightTeam();
+    console.log(playersArr);
+    console.log('team1 and team 2 arr')
+    console.log(team1Arr);
+    console.log(team2Arr);
+
+    const reprezentTeamsGraphicly = () => {
+        for (i = 0; i < team1Arr.length; i++) {
+            const liElement = document.createElement('li');
+            liElement.textContent = `${team1Arr[i].name}`;
+            ul1.appendChild(liElement);
+        };
+        for (i = 0; i < team2Arr.length; i++) {
+            const liElement = document.createElement('li');
+            liElement.textContent = `${team2Arr[i].name}`;
+            ul2.appendChild(liElement);
+        };
+    };
+
+    reprezentTeamsGraphicly();
 
 
 }
@@ -416,3 +439,13 @@ notEvenCloseBtn.addEventListener('click', closeNotEvenErr);
 
 // console.log('sum', '|', 'indices');
 // result.forEach(([sum, ...indices]) => console.log(sum, '|', indices.join(' ')));
+
+
+ // const reprezentTeamsGraphicly = () => {
+    //     team1Arr.forEach(el => {
+    //         const liElement = document.createElement('li');
+    //         liElement.textContent = `${team1Arr[el].name}`;
+    //         ul1.appendChild(liElement);
+    //     })
+
+    // }
