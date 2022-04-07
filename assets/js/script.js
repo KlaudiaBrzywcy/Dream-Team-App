@@ -64,6 +64,7 @@ const Artur = { name: 'Artur', skill: 2, damage: 3, speed: 6, id: 19, aPTA: 0 };
 // CREATING PLAYERS ARR
 let playersArr = [Perzu, Kopec, AntMan, Dawid, Gracjan, Jan, Biały, Krzychu, Michu,
     Jasion, Kajet, Tymek, Witek, Darek, Kebik, Kubson, Maciek, Kacper, Niclas, Artur];
+// let playersArr = [Perzu, Kopec, AntMan, Dawid, Gracjan, Jan, Biały, Krzychu, Michu, Jasion];
 
 
 // FUNCTIONS *****************************************************************************
@@ -232,7 +233,7 @@ const sort = () => {
     }
 
     console.log("----------------");
-
+    // aPta added to each player in playersArr
     console.log(playersArr)
 
     console.log(aPTAArr)
@@ -250,43 +251,74 @@ const sort = () => {
     console.log(teamSize);
     let team1Arr = [];
     let team1aPTA = 0;
-    let nrInRange = numberRange((goalaPTA + 1), (goalaPTA + 3));
+    // let nrInRange = numberRange((goalaPTA + 1), (goalaPTA + 3));
 
-    console.log(nrInRange)
+    // console.log(nrInRange)
     // team1Arr.length = teamSize;
     // let team2Arr = [];
     // team2Arr.length = teamSize;
 
-    // TUTAJ DOCELOWO BĘDĘ ITEROWAC PO TABLICY Z GRACZAMI playersArr WSTAWIŁAM NA RAZIE
-    // aPTAArr na potrzeby wymyslenia algorytmu optymalnego sortowania 
     console.log('pętla while ***************')
-    let i = 0;
-    if (nrInRange.includes(team1aPTA) === false) {
-        do {
-            team1aPTA += aPTAArr[i];
-            console.log(team1aPTA);
+    // let i = 0;
+    // if (nrInRange.includes(team1aPTA) === false) {
+    //     do {
+    //         team1aPTA += aPTAArr[i];
+    //         console.log(team1aPTA);
 
-            team1Arr.push(aPTAArr[i]);
-            console.log(team1Arr);
-            i++;
+    //         team1Arr.push(aPTAArr[i]);
+    //         console.log(team1Arr);
+    //         i++;
 
-        } while (team1aPTA <= goalaPTA && team1Arr.length < teamSize);
-    }
-    // do {
-    //     team1aPTA += aPTAArr[i];
-    //     console.log(team1aPTA);
+    //     } while (team1aPTA <= goalaPTA && team1Arr.length < teamSize);
+    // }
 
-    //     team1Arr.push(aPTAArr[i]);
-    //     console.log(team1Arr);
-    //     i++;
+    const getCombinations = (data, key, size, target, bias = Number.MAX_VALUE) => {
+        const iter = (index = 0, sum = 0, right = []) => {
+            if (right.length === size) {
+                if (Math.abs(target - sum) <= bias) result.push([sum, ...right]);
+                return;
+            }
+            if (index === data.length || sum > target + bias) return;
 
-    // } while (team1aPTA <= goalaPTA && team1Arr.length < teamSize);
-    // team1aPTA !== goalaPTA &&
-    // team1Arr.length <= teamSize &&
-    // team1aPTA <= (goalaPTA - 2) && team1aPTA <= (goalaPTA + 2)
-    // && nrInRange.includes(team1aPTA)
+            iter(index + 1, sum + data[index][key], [...right, index]);
+            iter(index + 1, sum, right);
+        };
+
+        result = [];
+
+        iter();
+
+        return result;
+    };
+
+
+    target = goalaPTA;
+    console.log('target below');
+    console.log(target);
+
+    result = getCombinations(playersArr, 'aPTA', playersArr.length >> 1, target, teamSize);
+    console.log('result ************************************');
+    // console.log(result);
+    // console.log(result[0][0]);
+
+    // result.forEach(el => console.log(el[0]));
+    let count = 0
+    result.forEach(el => {
+        if (count > 1) {
+            return;
+        } else if (count < 1) {
+            if (el[0] === target) {
+
+                console.log(el);
+                count++;
+            }
+        }
+    });
+
 
 }
+
+
 
 
 const openNonEvenErr = () => {
@@ -338,4 +370,49 @@ notEvenCloseBtn.addEventListener('click', closeNotEvenErr);
 
 // console.log('nr')
 // let nr = numberRange(1, 10);
-// console.log(nr) 
+// console.log(nr)
+
+
+// do {
+    //     team1aPTA += aPTAArr[i];
+    //     console.log(team1aPTA);
+
+    //     team1Arr.push(aPTAArr[i]);
+    //     console.log(team1Arr);
+    //     i++;
+
+    // } while (team1aPTA <= goalaPTA && team1Arr.length < teamSize);
+    // team1aPTA !== goalaPTA &&
+    // team1Arr.length <= teamSize &&
+    // team1aPTA <= (goalaPTA - 2) && team1aPTA <= (goalaPTA + 2)
+    // && nrInRange.includes(team1aPTA)
+
+// ********************************************************
+// const getCombinations = (data, key, size, target, bias = Number.MAX_VALUE) => {
+//     const iter = (index = 0, sum = 0, right = []) => {
+//         if (right.length === size) {
+//             if (Math.abs(target - sum) <= bias) result.push([sum, ...right]);
+//             return;
+//         }
+//         if (index === data.length || sum > target + bias) return;
+
+//         iter(index + 1, sum + data[index][key], [...right, index]);
+//         iter(index + 1, sum, right);
+//     },
+//         result = [];
+
+//     iter();
+//     return result;
+// },
+//     presentPlayers = [{ name: 'Perzu', aPTA: 8 }, { name: 'Kopeć', aPTA: 20 }, { name: 'Ant-Man', aPTA: 28 }, { name: 'Dawid', aPTA: 15 }, { name: 'Gracjan', aPTA: 24 }, { name: 'Jan', aPTA: 23 }]
+// target = presentPlayers.reduce((s, { aPTA }) => s + aPTA, 0) / 2,
+//     result = getCombinations(
+//         presentPlayers,
+//         'aPTA',
+//         presentPlayers.length >> 1,
+//         target,
+//         3
+//     );
+
+// console.log('sum', '|', 'indices');
+// result.forEach(([sum, ...indices]) => console.log(sum, '|', indices.join(' ')));
