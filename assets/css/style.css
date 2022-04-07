@@ -4,13 +4,25 @@ body {
     align-items: flex-start;
     height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background-color: rgb(164, 224, 245);
+    background-color: rgb(2, 19, 50);
+    background-image: url(https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
 }
 
 body {
     --playerCreatorBgColor: rgb(236, 89, 177);
-    --mainFOntColor: rgb(84, 86, 90);
-}
+    --mainFontColor: rgb(121, 196, 56);
+    --mainColor: rgb(249, 219, 22);
+    --secondaryColor:  rgb(212, 206, 206);
+    --avPlColor: rgb(59, 58, 58);
+    --hover1Color: rgb(248, 77, 9);
+    --hover2Color: rgb(248, 248, 9);
+    --hover3Color: rgb(248, 9, 9);
+    --playerColor: rgb(238, 242, 243);
+    --removePlayerBtn: rgb(240, 171, 24);
+    --addPlayerWrapperColor: rgb(96, 87, 87);
+    --applyBtnColor: rgb(178, 234, 253);
+    --applyBtnHr: rgb(59, 142, 170);
+} 
 
 .app-wrapper {
     height: 100vh;
@@ -21,27 +33,26 @@ body {
     flex-direction: column;
 }
 
-h1 {
-    text-transform: uppercase;
-    font-size: 40px;
-    margin: 40px;
-    color: rgb(84, 86, 90);
-    text-align: center;
+h1 img {
+    margin-top: 20px;
 }
 
 .players-wrapper {
-    background-color: rgb(209, 203, 203);
+    background-color: var(--secondaryColor);
     border-radius: 20px;
     padding: 10px;
     width: 1200px;
     margin-bottom: 10px;
-
+    -webkit-box-shadow: 0px 0px 31px 0px rgba(247, 245, 245, 1);
+    -moz-box-shadow: 0px 0px 31px 0px rgba(247, 245, 245, 1);
+    box-shadow: 0px 0px 31px 0px rgba(247, 245, 245, 1);
+    
 }
 
 .players-wrapper h2 {
     text-align: center;
     font-size: 20px;
-    color: rgb(59, 58, 58);
+    color: var(--avPlColor);
     margin-top: 5px;
     display: flex;
     justify-content: center;
@@ -68,20 +79,21 @@ h1 {
 }
 
 .sort-players {
-    background-color: rgb(248, 200, 9);
+    background-color: var(--mainColor);
+    
 }
 
 .sort-players:hover {
-    background-color: rgb(248, 77, 9);
+    background-color: var(--hover1Color);
 
 }
 
 .add-new-player:hover {
-    background-color: rgb(142, 202, 240);
+    background-color: var(--hover2Color);
 }
 
 .remove-all-players:hover {
-    background-color: rgb(235, 176, 14);
+    background-color: var(--hover3Color);
 }
 
 .players-container {
@@ -94,7 +106,7 @@ h1 {
 }
 
 .player {
-    background-color: rgb(135, 177, 191);
+    background-color: var(--playerColor);
     padding: 5px;
     width: calc(100%/10);
     height: fit-content;
@@ -114,7 +126,7 @@ h1 {
     background: none;
     display: block;
     margin: 0 auto;
-    color: rgb(240, 171, 24);
+    color: var(--removePlayerBtn) ;
     cursor: pointer;
 }
 
@@ -143,7 +155,7 @@ h1 {
 
 .team1,
 .team2 {
-    background-color: rgb(135, 127, 127);
+    
     width: 50%;
     height: 350px;
     border-radius: 12px;
@@ -162,7 +174,7 @@ h1 {
 .team1 h2,
 .team2 h2 {
     text-align: center;
-    color: rgb(240, 171, 24);
+    color: var(--mainColor);
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -170,7 +182,7 @@ h1 {
 .team1 h3,
 .team2 h3 {
     text-align: center;
-    color: rgb(240, 171, 24);
+    color: var(--mainColor);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -182,6 +194,9 @@ h1 {
     text-align: center;
     margin-top: 0px;
     margin-bottom: 5px;
+    font-weight: 700;
+
+    color: var(--removePlayerBtn);
 }
 
 .team1 h3 p,
@@ -197,18 +212,16 @@ ul {
     overflow: hidden;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0 0 20px 0;
-    font-weight: 700;
-    font-size: 20px;
 
 }
 
 li {
     list-style-type: none;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     margin: 10px;
     display: inline-block;
+    color: var(--mainColor);
 }
 
 /**************** Player creator ***************/
@@ -224,19 +237,20 @@ li {
     transform: translate(-50%, -50%);
     padding: 40px 0;
     width: 600px;
-    background-color: rgb(188, 233, 238);
-    box-shadow: 0 0 15px rgb(130, 126, 126);
+    background-color: var(--addPlayerWrapperColor);
+    box-shadow: 0 0 25px var(--mainColor);
     border-radius: 12px;
 
 }
 
 .player-creator h2 {
     font-size: 30px;
+    color: var(--mainColor);
 }
 
 label {
     font-size: 20px;
-    color: rgb(159, 122, 22);
+    color: var(--mainColor);
     margin: 10px 0;
     font-weight: 700;
 
@@ -252,11 +266,11 @@ input {
 }
 
 input:hover {
-    background-color: rgb(144, 199, 233);
+    background-color: var(--removePlayerBtn);
 }
 
 .player-creator .error {
-    color: rgb(235, 121, 14);
+    color: var(--removePlayerBtn);
     font-size: 20px;
     visibility: hidden;
     font-weight: 700;
@@ -273,21 +287,21 @@ input:hover {
 }
 
 .add-player-creator-btn {
-    background-color: rgb(20, 172, 167);
+    background-color: var(--applyBtnColor);
     margin-right: 10px;
 }
 
 .add-player-creator-btn:hover {
-    background-color: rgb(81, 241, 236);
+    background-color: var(--applyBtnHr);
 }
 
 .cancel-btn {
-    background-color: rgb(235, 121, 14);
+    background-color: var(--removePlayerBtn);
     margin-left: 10px;
 }
 
 .cancel-btn:hover {
-    background-color: rgb(235, 171, 111);
+    background-color: var(--hover3Color);
 }
 
 /****************** Non even error div ************************* */
@@ -295,7 +309,7 @@ input:hover {
 .not-even-error {
     display: none; 
     z-index: 10;
-    background-color: rgb(237, 157, 28); 
+    background-color: var(--removePlayerBtn); 
     width: 50%;
     padding: 20px;
     border-radius: 12px; 
@@ -339,20 +353,21 @@ input:hover {
     height: 20%;
 }
 
-.again-btn { 
+.again-btn {  
     display: none;
     cursor: pointer;
-    width: 100%;
-    height: 90%; 
+    width: 120%;
+    height: 100%; 
     border-radius: 12px;
     border: none;
+    font-size: 25px;
     font-weight: 700;
     transition: 0.3s;
-    background-color: rgb(243, 185, 9);
+    background-color: var(--removePlayerBtn);
     -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
--moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-} 
+    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}  
 
 .again-btn:hover {
     background-color: rgb(247, 12, 12);
