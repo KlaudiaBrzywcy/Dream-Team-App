@@ -6,6 +6,9 @@ const selected1 = document.querySelector('.selected-players1');
 const selected2 = document.querySelector('.selected-players2');
 const notEvenErrDiv = document.querySelector('.not-even-error');
 const notEvenCloseBtn = document.querySelector('.close-btn');
+const tryAgainDiv = document.querySelector('.try-again');
+const tryAgainBtn = document.querySelector('.again-btn');
+const shadow = document.querySelector('.shadow');
 
 // CREATOR BTNS
 const addPlayerCreatorBtn = document.querySelector('.add-player-creator-btn');
@@ -89,8 +92,10 @@ const closeCreator = () => {
 
 const addNewPlayer = () => {
     checkForm();
-    createNewPlayer();
-    closeCreator();
+    if (openError === false) {
+        createNewPlayer();
+        closeCreator();
+    }
 }
 
 // CREATING NEW PLAYER
@@ -110,10 +115,11 @@ const createNewPlayer = () => {
     `
     playersContainer.appendChild(player);
 
-    playerID++;
+
 
     let newPlayerObject = { name: `${inputName.value}`, skill: parseInt(inputSkill.value), damage: parseInt(inputDamage.value), speed: parseInt(inputSpeed.value), id: playerID, aPTA: 0 }
-    playersArr.push(newPlayerObject)
+    playersArr.push(newPlayerObject);
+    playerID++;
 }
 
 
@@ -125,8 +131,8 @@ const removeOnePlayer = (id) => {
     const playerToRemove = document.getElementById(id);
     playersContainer.removeChild(playerToRemove);
 
-    listToRemove.push(parseInt(playerToRemove.id))
-    console.log(listToRemove)
+    listToRemove.push(parseInt(playerToRemove.id));
+    console.log(listToRemove);
     updateArr2();
 
 }
@@ -138,13 +144,16 @@ const removeAllPlayers = () => {
     playersArr = [];
 }
 
+let openError = true;
 const checkForm = () => {
     if (inputName.value === '' ||
         inputSkill.value === '' ||
         inputDamage.value === '' ||
         inputSpeed.value === '') {
+        openError = true;
         errorCreator.style.visibility = 'visible'
     } else {
+        openError = false;
         errorCreator.style.visibility = 'hidden'
     }
 }
@@ -170,6 +179,7 @@ const createDefaultPlayers = () => {
     playersContainer.appendChild(player);
     playerID++;
 }
+
 
 playersArr.forEach(el => createDefaultPlayers())
 
@@ -323,25 +333,63 @@ const sort = () => {
     console.log(team1Arr);
     console.log(team2Arr);
 
+    // console.log(team1Arr[0].speed)
+
+
+
+    const calculateTeamAssets = (arr, anotherArr) => {
+        let skillSum = 0;
+        let damageSum = 0;
+        let speedSum = 0;
+        for (i = 0; i < arr.length; i++) {
+
+            skillSum += arr[i].skill;
+
+            damageSum += arr[i].damage;
+
+            speedSum += arr[i].speed;
+        }
+        anotherArr.push(skillSum);
+        anotherArr.push(damageSum);
+        anotherArr.push(speedSum);
+    }
+
+    let team1SumOfAssets = [];
+    let team2SumOfAssets = [];
+
+    calculateTeamAssets(team1Arr, team1SumOfAssets);
+    calculateTeamAssets(team2Arr, team2SumOfAssets);
+
+
     const reprezentTeamsGraphicly = () => {
+
+        tryAgainDiv.style.display = 'block';
+        shadow.style.display = 'block';
         for (i = 0; i < team1Arr.length; i++) {
             const liElement = document.createElement('li');
             liElement.textContent = `${team1Arr[i].name}`;
             ul1.appendChild(liElement);
+            skillTeam1.textContent = ` ${team1SumOfAssets[0]}`;
+            damageTeam1.textContent = ` ${team1SumOfAssets[1]}`;
+            speedTeam1.textContent = ` ${team1SumOfAssets[2]}`;
+
         };
         for (i = 0; i < team2Arr.length; i++) {
             const liElement = document.createElement('li');
             liElement.textContent = `${team2Arr[i].name}`;
             ul2.appendChild(liElement);
+            skillTeam2.textContent = ` ${team2SumOfAssets[0]}`;
+            damageTeam2.textContent = ` ${team2SumOfAssets[1]}`;
+            speedTeam2.textContent = ` ${team2SumOfAssets[2]}`;
         };
+        playersArr = [];
     };
+
+
 
     reprezentTeamsGraphicly();
 
-
 }
-
-
 
 
 const openNonEvenErr = () => {
@@ -353,6 +401,10 @@ const closeNotEvenErr = () => {
     notEvenErrDiv.style.display = 'none';
 }
 
+const clearState = () => {
+
+    window.location.reload(true);
+};
 
 // EVENT LISTENERS
 addNewPlayerBtn.addEventListener('click', openCreator);
@@ -361,91 +413,7 @@ addPlayerCreatorBtn.addEventListener('click', addNewPlayer);
 removeAllBtn.addEventListener('click', removeAllPlayers);
 sortPlayersBtn.addEventListener('click', sortPlayers);
 notEvenCloseBtn.addEventListener('click', closeNotEvenErr);
+tryAgainBtn.addEventListener('click', clearState);
 
 
 
-// BRUDNOPIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// let skillSum = 0;
-// let damageSum = 0;
-// let speedSum = 0;
-// for (i = 0; i < playersArr.length; i++) {
-
-//     skillSum += playersArr[i].skill;
-
-//     damageSum += playersArr[i].damage;
-
-//     speedSum += playersArr[i].speed;
-// }
-// // console.log(skillSum);
-// const mediumSkill = Math.round(skillSum / playersArr.length);
-// console.log(mediumSkill);
-// // console.log(damageSum);
-// const mediumDamage = Math.round(damageSum / playersArr.length);
-// console.log(mediumDamage);
-// // console.log(speedSum);
-// const mediumSpeed = Math.round(speedSum / playersArr.length);
-// console.log(mediumSpeed);
-
-// function numberRange(start, end) {
-//     return new Array(end - start).fill().map((d, i) => i + start);
-// }
-
-// console.log('nr')
-// let nr = numberRange(1, 10);
-// console.log(nr)
-
-
-// do {
-    //     team1aPTA += aPTAArr[i];
-    //     console.log(team1aPTA);
-
-    //     team1Arr.push(aPTAArr[i]);
-    //     console.log(team1Arr);
-    //     i++;
-
-    // } while (team1aPTA <= goalaPTA && team1Arr.length < teamSize);
-    // team1aPTA !== goalaPTA &&
-    // team1Arr.length <= teamSize &&
-    // team1aPTA <= (goalaPTA - 2) && team1aPTA <= (goalaPTA + 2)
-    // && nrInRange.includes(team1aPTA)
-
-// ********************************************************
-// const getCombinations = (data, key, size, target, bias = Number.MAX_VALUE) => {
-//     const iter = (index = 0, sum = 0, right = []) => {
-//         if (right.length === size) {
-//             if (Math.abs(target - sum) <= bias) result.push([sum, ...right]);
-//             return;
-//         }
-//         if (index === data.length || sum > target + bias) return;
-
-//         iter(index + 1, sum + data[index][key], [...right, index]);
-//         iter(index + 1, sum, right);
-//     },
-//         result = [];
-
-//     iter();
-//     return result;
-// },
-//     presentPlayers = [{ name: 'Perzu', aPTA: 8 }, { name: 'Kopeć', aPTA: 20 }, { name: 'Ant-Man', aPTA: 28 }, { name: 'Dawid', aPTA: 15 }, { name: 'Gracjan', aPTA: 24 }, { name: 'Jan', aPTA: 23 }]
-// target = presentPlayers.reduce((s, { aPTA }) => s + aPTA, 0) / 2,
-//     result = getCombinations(
-//         presentPlayers,
-//         'aPTA',
-//         presentPlayers.length >> 1,
-//         target,
-//         3
-//     );
-
-// console.log('sum', '|', 'indices');
-// result.forEach(([sum, ...indices]) => console.log(sum, '|', indices.join(' ')));
-
-
- // const reprezentTeamsGraphicly = () => {
-    //     team1Arr.forEach(el => {
-    //         const liElement = document.createElement('li');
-    //         liElement.textContent = `${team1Arr[el].name}`;
-    //         ul1.appendChild(liElement);
-    //     })
-
-    // }
