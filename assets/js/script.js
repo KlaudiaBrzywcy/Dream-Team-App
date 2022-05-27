@@ -43,26 +43,27 @@ let playerID = 0;
 const teamAmount = 2;
 
 // CREATING DEFAULT PLAYERS 
-const Perzu = { name: 'Perzu', skill: 2, damage: 2, speed: 4, id: 0, aPTA: 0 };
-const Kopec = { name: 'Kopeć', skill: 7, damage: 7, speed: 6, id: 1, aPTA: 0 };
-const AntMan = { name: 'Ant-Man', skill: 10, damage: 9, speed: 9, id: 2, aPTA: 0 };
-const Dawid = { name: 'Dawid', skill: 5, damage: 4, speed: 6, id: 3, aPTA: 0 };
-const Gracjan = { name: 'Gracjan', skill: 8, damage: 6, speed: 10, id: 4, aPTA: 0 };
-const Jan = { name: 'Jan', skill: 6, damage: 10, speed: 7, id: 5, aPTA: 0 };
-const Biały = { name: 'Biały', skill: 7, damage: 5, speed: 6, id: 6, aPTA: 0 };
-const Krzychu = { name: 'Krzychu', skill: 4, damage: 6, speed: 5, id: 7, aPTA: 0 };
-const Michu = { name: 'Michu', skill: 2, damage: 1, speed: 8, id: 8, aPTA: 0 };
-const Jasion = { name: 'Jasion', skill: 7, damage: 9, speed: 6, id: 9, aPTA: 0 };
-const Kajet = { name: 'Kajet', skill: 10, damage: 9, speed: 8, id: 10, aPTA: 0 };
-const Tymek = { name: 'Tymek', skill: 10, damage: 9, speed: 10, id: 11, aPTA: 0 };
-const Witek = { name: 'Witek', skill: 5, damage: 5, speed: 8, id: 12, aPTA: 0 };
-const Darek = { name: 'Darek', skill: 7, damage: 6, speed: 5, id: 13, aPTA: 0 };
-const Kebik = { name: 'Kebik', skill: 5, damage: 4, speed: 7, id: 14, aPTA: 0 };
-const Kubson = { name: 'Kubson', skill: 8, damage: 7, speed: 8, id: 15, aPTA: 0 };
-const Maciek = { name: 'Maciek', skill: 7, damage: 6, speed: 6, id: 16, aPTA: 0 };
-const Kacper = { name: 'Kacper', skill: 6, damage: 4, speed: 8, id: 17, aPTA: 0 };
-const Niclas = { name: 'Niclas', skill: 6, damage: 7, speed: 5, id: 18, aPTA: 0 };
-const Artur = { name: 'Artur', skill: 2, damage: 3, speed: 6, id: 19, aPTA: 0 };
+
+const Perzu = { name: 'Perzu', skill: 5, damage: 3, speed: 6, id: 0, aPTA: 0 };
+const Kopec = { name: 'Kopeć', skill: 12, damage: 13, speed: 12, id: 1, aPTA: 0 };
+const AntMan = { name: 'Ant-Man', skill: 17, damage: 17, speed: 17, id: 2, aPTA: 0 };
+const Dawid = { name: 'Dawid', skill: 10, damage: 11, speed: 12, id: 3, aPTA: 0 };
+const Gracjan = { name: 'Gracjan', skill: 11, damage: 13, speed: 20, id: 4, aPTA: 0 };
+const Jan = { name: 'Jan', skill: 20, damage: 13, speed: 13, id: 5, aPTA: 0 };
+const Biały = { name: 'Biały', skill: 11, damage: 14, speed: 13, id: 6, aPTA: 0 };
+const Krzychu = { name: 'Krzychu', skill: 12, damage: 10, speed: 10, id: 7, aPTA: 0 };
+const Michu = { name: 'Michu', skill: 3, damage: 4, speed: 14, id: 8, aPTA: 0 };
+const Jasion = { name: 'Jasion', skill: 16, damage: 13, speed: 10, id: 9, aPTA: 0 };
+const Kajet = { name: 'Kajet', skill: 17, damage: 17, speed: 15, id: 10, aPTA: 0 };
+const Tymek = { name: 'Tymek', skill: 16, damage: 20, speed: 19, id: 11, aPTA: 0 };
+const Witek = { name: 'Witek', skill: 11, damage: 10, speed: 18, id: 12, aPTA: 0 };
+const Darek = { name: 'Darek', skill: 14, damage: 14, speed: 10, id: 13, aPTA: 0 };
+const Kebik = { name: 'Kebik', skill: 10, damage: 11, speed: 15, id: 14, aPTA: 0 };
+const Kubson = { name: 'Kubson', skill: 16, damage: 17, speed: 17, id: 15, aPTA: 0 };
+const Maciek = { name: 'Maciek', skill: 13, damage: 13, speed: 14, id: 16, aPTA: 0 };
+const Kacper = { name: 'Kacper', skill: 8, damage: 12, speed: 16, id: 17, aPTA: 0 };
+const Niclas = { name: 'Niclas', skill: 14, damage: 14, speed: 10, id: 18, aPTA: 0 };
+const Artur = { name: 'Artur', skill: 8, damage: 8, speed: 10, id: 19, aPTA: 0 }; 
 
 // CREATING PLAYERS ARR
 let playersArr = [Perzu, Kopec, AntMan, Dawid, Gracjan, Jan, Biały, Krzychu, Michu,
@@ -72,7 +73,7 @@ let playersArr = [Perzu, Kopec, AntMan, Dawid, Gracjan, Jan, Biały, Krzychu, Mi
 
 // FUNCTIONS *****************************************************************************
 
-// function for creating numer range
+// function for creating number range
 function numberRange(start, end) {
     return new Array(end - start).fill().map((d, i) => i + start);
 };
@@ -183,7 +184,7 @@ const createDefaultPlayers = () => {
 
 playersArr.forEach(el => createDefaultPlayers())
 
-// 2 Functions that removes the right player from playersArr
+// 2 Functions that remove the right player from playersArr
 const updateArr1 = () => {
     for (let i = 0; i < playersArr.length; i++) {
         // console.log(playersArr[i].id)
@@ -201,16 +202,10 @@ const updateArr2 = () => {
     }
 }
 
-
-
 //  **********SORTING PLAYERS TO EACH TEAM ****************
 
 const sortPlayers = () => {
-    console.log('sort players');
-
-    console.log('final arr')
-    console.log(playersArr)
-
+   
     // CHECK if teams are even
     console.log(playersArr.length)
     if (playersArr.length % 2 !== 0) {
@@ -232,7 +227,6 @@ const sort = () => {
     console.log('click');
 
     // Average player total asset - aPTA
-
     // check aPTA for each player and add to the aPTAArr and update aPTA
     // in playersArr
 
@@ -282,21 +276,10 @@ const sort = () => {
         return result;
     };
 
-    console.log('playersAr');
-    console.log(playersArr);
-
-
     target = goalaPTA;
 
-    console.log('target below');
-    console.log(target);
-
-    console.log('pleyersArr before result');
-    console.log(playersArr);
-
     result = getCombinations(playersArr, 'aPTA', playersArr.length >> 1, target, teamSize);
-    console.log('result ************************************');
-
+   
     let count = 0
     result.forEach(el => {
         if (count > 1) {
@@ -310,13 +293,9 @@ const sort = () => {
             }
         }
     });
-    console.log('team1indexes')
-    console.log(team1Indexes);
+   
     team1Indexes.shift();
-    console.log(team1Indexes);
-    console.log('Pushing players to right teams');
-
-
+    
     const pushToRightTeam = () => {
         for (i = 0; i < playersArr.length; i++) {
             if (team1Indexes.includes(i)) {
@@ -328,15 +307,7 @@ const sort = () => {
     }
 
     pushToRightTeam();
-    console.log(playersArr);
-    console.log('team1 and team 2 arr')
-    console.log(team1Arr);
-    console.log(team2Arr);
-
-    // console.log(team1Arr[0].speed)
-
-
-
+  
     const calculateTeamAssets = (arr, anotherArr) => {
         let skillSum = 0;
         let damageSum = 0;
@@ -385,10 +356,7 @@ const sort = () => {
         playersArr = [];
     };
 
-
-
     reprezentTeamsGraphicly();
-
 }
 
 
