@@ -7,6 +7,7 @@ Dream-Team-App was created as a solution of a problem with choosing two equal as
 - App loads default players, but you can remove them and add your own players. 
 - When ready click 'Find Your Team' button 
 - ✨Magic ✨
+- you can find deployed app here: https://klaudiabrzywcy.github.io/Dream-Team-App/
 
 ## Tech
 - [HTML 5] 
