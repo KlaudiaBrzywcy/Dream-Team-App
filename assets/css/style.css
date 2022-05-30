@@ -82,6 +82,7 @@ h1{
     margin: 5px;
     cursor: pointer;
     transition: 300ms;
+    font-size: 16px;
 }
 
 .sort-players {
@@ -131,16 +132,33 @@ h1{
         flex-direction: column;
     }
 
+
     .team1 {
-        margin-bottom: 50px;
+        margin-bottom: 20px;
+    } 
+    .ul1, .ul2 {
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+    } 
+
+    .add-new-player,
+    .remove-all-players,
+    .sort-players {
+        font-size: 13px;
     }
 
-    li {
-        font-size: 16px;
+    h2{
+        font-size: 18px;
+        text-align: justify;
     }
-   
 }
 
+@media(max-width: 420px){
+    .try-again .again-btn {
+        font-size: 16px
+    }
+}
 
 .player {
     background-color: var(--playerColor);
@@ -184,9 +202,7 @@ h1{
     h4{
         font-size: 14px;
     } 
-    .try-again {
-        width: 70px;
-    }  
+    
 } 
 
 @media(max-width: 882px) {
@@ -210,7 +226,10 @@ h1{
     .player {
         width: calc(100%/4);
     }
-}
+    .try-again {
+        width: 60%;
+    }
+} 
 
 @media(max-width: 616px) {
     .add-new-player,
@@ -224,6 +243,7 @@ h1{
     cursor: pointer;
     transition: 300ms;
 }
+
 }
 
 
@@ -262,10 +282,18 @@ h1{
 .team2 {
     
     width: 50%;
-    height: 350px;
+   
     border-radius: 12px;
     padding: 20px;
 }
+
+@media (max-width: 440px) {
+    .team1, .team2 {
+        margin: 10px 0 10px 0;
+        padding: 5px;
+        width: 90%;
+    }
+} 
 
 
 .team1 {
@@ -337,7 +365,7 @@ li {
     align-items: center;
     flex-direction: column;
     position: absolute;
-    top: 30%; 
+    top: 50%; 
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 40px 0;
@@ -409,6 +437,29 @@ input:hover {
     background-color: var(--hover3Color);
 }
 
+@media(max-width: 640px){
+    .player-creator{
+        width: 400px;
+    }
+}
+@media(max-width: 450px){
+    .player-creator{
+        width: 300px;
+    }
+    .player-creator h2 {
+        font-size: 20px;
+        
+    }
+    .creator-btns {
+        display: flex;
+        flex-direction: column;
+        justify-content:center ;
+        align-items: center;
+    }
+    .add-player-creator-btn, .cancel-btn {
+        margin: 5px 0 5px 0;
+    } 
+}
 /****************** Non even error div ************************* */
 
 .not-even-error {
@@ -423,6 +474,8 @@ input:hover {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
 
 .not-even-error p {
     font-size: 26px;
@@ -446,17 +499,34 @@ input:hover {
     background-color: #fff;
 }
 
+@media(max-width: 470px) {
+    .not-even-error{
+        width: 80%;
+        padding: 10px;
+        top: 10%;
+    }
+
+    .not-even-error p {
+        font-size: 16px;  
+    }
+
+    .close-btn {
+        font-size: 13px;
+    }
+}
+
 /************ Try again******************** */
 
 .try-again {
     display: none; 
     z-index: 1000;
     position: absolute;
-    top: 65%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 15%;
+    /* width: 300px; */
+    width: 40%;
+    height: 16%; 
 }
 
 .again-btn {  
